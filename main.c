@@ -7,35 +7,45 @@ void menu() {
     do {
         printf("\n--- Sistema de Gestão de Eventos ---\n");
         printf("1. Lista de Eventos\n");
-        printf("2. Gerir Evento\n");
-        printf("3. Exibir Número de Inscritos por Evento\n");
-        printf("4. Gestão de Inscrições em Eventos com Vagas Limitadas\n");
+        printf("2. Criar Evento");
+        printf("3. Gerir Evento\n");
+        printf("4. Gestão de Inscrições\n");
         printf("5. Registar Utilizador\n");
         printf("0. Sair\n");
         printf("Opção: ");
         scanf("%d", &opcao);
-        switch (opcao) {
-            case 1:
+            if(opcao==1) 
+                {
                 printf("Lista de Eventos");
-                break;
-            case 2:
+                }
+            else
+                if(opcao==2)
+                {
                 printf("Criar Evento");
-                break;
-            case 3:
+                }
+            else
+                if(opcao==3)
+                {
                 printf("Gerir Evento");
-                break;
-            case 4:
+                }
+            else
+                if(opcao==4){
                 printf("Gerir inscricoes");
-                break;
-            case 5:
+                }
+            else
+                if(opcao==6)
+                {
                 printf("Registar Utilizador");
-                break;
-            case 0:
+                }
+            else
+                if(opcao==0)
+                {
                 printf("Saindo...\n");
-                break;
-            default:
+                }
+            else(opcao==7){
                 printf("Opção inválida!\n");
-        }
+                }
+            
     } while (opcao != 0);
 }
 
