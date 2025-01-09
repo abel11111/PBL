@@ -7,7 +7,7 @@ void menu() {
     do {
         printf("\n--- Sistema de Gestão de Eventos ---\n");
         printf("1. Lista de Eventos\n");
-        printf("2. \n");
+        printf("2. Gerir Evento\n");
         printf("3. Exibir Número de Inscritos por Evento\n");
         printf("4. Gestão de Inscrições em Eventos com Vagas Limitadas\n");
         printf("5. Registar Utilizador\n");
