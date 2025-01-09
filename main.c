@@ -6,26 +6,29 @@ void menu() {
     int opcao;
     do {
         printf("\n--- Sistema de Gestão de Eventos ---\n");
-        printf("1. Apresentação de Eventos\n");
-        printf("2. Emitir Bilhete Eletrônico\n");
+        printf("1. Lista de Eventos\n");
+        printf("2. \n");
         printf("3. Exibir Número de Inscritos por Evento\n");
         printf("4. Gestão de Inscrições em Eventos com Vagas Limitadas\n");
+        printf("5. Registar Utilizador\n");
         printf("0. Sair\n");
         printf("Opção: ");
         scanf("%d", &opcao);
-        
         switch (opcao) {
             case 1:
-                printf("apresentacaoEventos");
+                printf("Lista de Eventos");
                 break;
             case 2:
-                printf("emitirBilheteEletronico");
+                printf("Criar Evento");
                 break;
             case 3:
-                printf("NumeroInscritos");
+                printf("Gerir Evento");
                 break;
             case 4:
-                printf("gestaoInscricoes");
+                printf("Gerir inscricoes");
+                break;
+            case 5:
+                printf("Registar Utilizador");
                 break;
             case 0:
                 printf("Saindo...\n");
