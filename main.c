@@ -13,6 +13,7 @@ void menu() {
         printf("0. Sair\n");
         printf("Opção: ");
         scanf("%d", &opcao);
+        
         switch (opcao) {
             case 1:
                 printf("apresentacaoEventos");
