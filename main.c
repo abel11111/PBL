@@ -59,7 +59,7 @@ int validarNome(const char *nome) {
 
 void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int *totalEventos, Inscricao inscricoes[], int *totalInscricoes) {
     while (!validarNome(nomeUtilizador)) {
-        printf("Nome invÃ¡lido! O nome deve conter apenas letras e espaÃ§os.\n");
+        printf("Nome invalido! O nome deve conter apenas letras e espacos.\n");
         printf("Por favor, insira novamente o nome: ");
         getchar(); 
         fgets(nomeUtilizador, 100, stdin);
@@ -78,7 +78,7 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
         printf("\n===                            ===");
         printf("\n=== 3. Remover inscricao       ===");
         printf("\n===                            ===");
-        printf("\n=== 4. Gerar bilhete eletranico===");
+        printf("\n=== 4. Gerar bilhete eletronico===");
         printf("\n===                            ===");
         printf("\n=== 5. Voltar ao menu principal===");
         printf("\n==================================\n");
@@ -122,9 +122,6 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
     } while (opcao != 5);
 }
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 void gerarQRCodeSimulado(const char *dados) {
     printf("\nCodigo QR (simulado):\n");
@@ -143,7 +140,7 @@ void gerarBilheteEletronico(char *nomeUtilizador, char *Telemovel, Inscricao ins
              nomeUtilizador, Telemovel, evento.nome, evento.dataHora, evento.local);
 
     printf("\n==================================");
-    printf("\n===     Bilhete Eletranico     ===");
+    printf("\n===     Bilhete Eletronico     ===");
     printf("\n==================================\n");
     printf("Nome: %s\n", nomeUtilizador);
     printf("Telemovel: %s\n", Telemovel);
@@ -166,7 +163,7 @@ void removerInscricao(char *utilizador, Evento eventos[], int totalEventos, Insc
     printf("\n=== Remover Inscricao ===\n");
     int indiceEvento;
     listarEventos(eventos, totalEventos);
-    printf("Digite o nÃºmero do evento do qual deseja remover sua inscricao: ");
+    printf("Digite o numero do evento do qual deseja remover sua inscricao: ");
     scanf("%d", &indiceEvento);
 
     if (indiceEvento < 1 || indiceEvento > totalEventos) {
@@ -349,7 +346,7 @@ void inscreverEvento(char *utilizador, char *telefone, Evento eventos[], int tot
             eventoSelecionado->filaEsperaFim++;
             printf("Evento cheio! Voce foi adicionado a fila de espera.\n");
         } else {
-            printf("Fila de espera cheia! NÃ£o Ã© possi­vel adicionar a fila.\n");
+            printf("Fila de espera cheia! Nao e possi­vel adicionar a fila.\n");
         }
     }
 
