@@ -76,13 +76,13 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
         printf("\n===                            ===");
         printf("\n=== 2. Inscrever-se em evento  ===");
         printf("\n===                            ===");
-        printf("\n=== 3. Remover inscriÃ§Ã£o       ===");
+        printf("\n=== 3. Remover inscricao       ===");
         printf("\n===                            ===");
-        printf("\n=== 4. Gerar bilhete eletrÃ´nico===");
+        printf("\n=== 4. Gerar bilhete eletranico===");
         printf("\n===                            ===");
         printf("\n=== 5. Voltar ao menu principal===");
         printf("\n==================================\n");
-        printf("\n==>Escolha uma opÃ§Ã£o: ");
+        printf("\n==>Escolha uma opcao: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -109,7 +109,7 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
                     }
                 }
                 if (!encontrado) {
-                    printf("VocÃª nÃ£o estÃ¡ inscrito em nenhum evento.\n");
+                    printf("Voce nao esta inscrito em nenhum evento.\n");
                 }
                 break;
             }
@@ -117,7 +117,7 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
                 printf("Voltando ao menu principal...\n");
                 break;
             default:
-                printf("OpÃ§Ã£o invÃ¡lida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
         }
     } while (opcao != 5);
 }
@@ -127,7 +127,7 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
 #include <stdlib.h>
 
 void gerarQRCodeSimulado(const char *dados) {
-    printf("\nCÃ³digo QR (simulado):\n");
+    printf("\nCodigo QR (simulado):\n");
     for (size_t i = 0; i < strlen(dados); i++) {
         if (i % 5 == 0) {
             printf("\n");
@@ -143,7 +143,7 @@ void gerarBilheteEletronico(char *nomeUtilizador, char *Telemovel, Inscricao ins
              nomeUtilizador, Telemovel, evento.nome, evento.dataHora, evento.local);
 
     printf("\n==================================");
-    printf("\n===     Bilhete EletrÃ´nico     ===");
+    printf("\n===     Bilhete Eletranico     ===");
     printf("\n==================================\n");
     printf("Nome: %s\n", nomeUtilizador);
     printf("Telemovel: %s\n", Telemovel);
@@ -159,18 +159,18 @@ void gerarBilheteEletronico(char *nomeUtilizador, char *Telemovel, Inscricao ins
 
 void removerInscricao(char *utilizador, Evento eventos[], int totalEventos, Inscricao inscricoes[], int *totalInscricoes) {
     if (*totalInscricoes == 0) {
-        printf("Nenhuma inscriÃ§Ã£o encontrada para remover.\n");
+        printf("Nenhuma inscricao encontrada para remover.\n");
         return;
     }
 
-    printf("\n=== Remover InscriÃ§Ã£o ===\n");
+    printf("\n=== Remover Inscricao ===\n");
     int indiceEvento;
     listarEventos(eventos, totalEventos);
-    printf("Digite o nÃºmero do evento do qual deseja remover sua inscriÃ§Ã£o: ");
+    printf("Digite o nÃºmero do evento do qual deseja remover sua inscricao: ");
     scanf("%d", &indiceEvento);
 
     if (indiceEvento < 1 || indiceEvento > totalEventos) {
-        printf("NÃºmero de evento invÃ¡lido. OperaÃ§Ã£o cancelada.\n");
+        printf("Numero de evento invalido. Operacao cancelada.\n");
         return;
     }
 
@@ -188,7 +188,7 @@ void removerInscricao(char *utilizador, Evento eventos[], int totalEventos, Insc
             (*totalInscricoes)--;
             eventoSelecionado->numInscritos--;
 
-            printf("InscriÃ§Ã£o removida com sucesso!\n");
+            printf("Inscricao removida com sucesso!\n");
 
             
             verificarFilaDeEspera(indiceEvento - 1, eventos, inscricoes, totalInscricoes);
@@ -197,13 +197,13 @@ void removerInscricao(char *utilizador, Evento eventos[], int totalEventos, Insc
     }
 
     if (!encontrado) {
-        printf("VocÃª nÃ£o estÃ¡ inscrito neste evento.\n");
+        printf("Voce nao esta inscrito neste evento.\n");
     }
 }
 
 void criarEvento(Evento eventos[], int *totalEventos) {
     if (*totalEventos >= MAX_EVENTOS) {
-        printf("Limite de eventos atingido. NÃ£o Ã© possÃ­vel criar mais eventos.\n");
+        printf("Limite de eventos atingido. Nao e possi­vel criar mais eventos.\n");
         return;
     }
 
@@ -224,10 +224,10 @@ void criarEvento(Evento eventos[], int *totalEventos) {
 
     int valido = 0;
     while (!valido) {
-        printf("Digite o nÃºmero mÃ¡ximo de pessoas para este evento: ");
+        printf("Digite o numero maximo de pessoas para este evento: ");
         if (scanf("%d", &novoEvento.maxPessoas) != 1 || novoEvento.maxPessoas <= 0) {
             printf("--------------------------------- \n");
-            printf("Entrada invÃ¡lida! \nPor favor, insira um nÃºmero inteiro positivo.\n");
+            printf("Entrada invalida! \nPor favor, insira um numero inteiro positivo.\n");
             printf("--------------------------------- \n");
             while (getchar() != '\n'); 
         } else {
@@ -263,7 +263,7 @@ void listarEventos(Evento eventos[], int totalEventos) {
         printf("\n===                            ===");
         printf("\n=== Local: %s                  ", eventos[i].local);
         printf("\n===                            ===");
-        printf("\n=== MÃ¡ximo de Pessoas: %d      ", eventos[i].maxPessoas);
+        printf("\n=== Maximo de Pessoas: %d      ", eventos[i].maxPessoas);
         printf("\n===                            ===");
         printf("\n=== Inscritos: %d              ", eventos[i].numInscritos);
         printf("\n===                            ===");
@@ -280,16 +280,16 @@ void apagarEvento(Evento eventos[], int *totalEventos) {
 
     int indice;
     listarEventos(eventos, *totalEventos);
-    printf("Digite o nÃºmero do evento que deseja apagar (ou 0 para voltar): ");
+    printf("Digite o namero do evento que deseja apagar (ou 0 para voltar): ");
     scanf("%d", &indice);
 
     if (indice == 0) {
-        printf("OperaÃ§Ã£o cancelada. Voltando ao menu do administrador...\n");
+        printf("Operacao cancelada. Voltando ao menu do administrador...\n");
         return; 
     }
 
     if (indice < 1 || indice > *totalEventos) {
-        printf("NÃºmero invÃ¡lido. OperaÃ§Ã£o cancelada.\n");
+        printf("Numero invalido. Operacao cancelada.\n");
         return;
     }
 
@@ -304,29 +304,29 @@ void apagarEvento(Evento eventos[], int *totalEventos) {
 
 void inscreverEvento(char *utilizador, char *telefone, Evento eventos[], int totalEventos, Inscricao inscricoes[], int *totalInscricoes) {
     if (totalEventos == 0) {
-        printf("Nenhum evento disponÃ­vel para inscriÃ§Ã£o.\n");
+        printf("Nenhum evento disponi­vel para inscricao.\n");
         return;
     }
 
     int indice;
     listarEventos(eventos, totalEventos);
-    printf("Digite o nÃºmero do evento que deseja inscrever-se: ");
+    printf("Digite o numero do evento que deseja inscrever-se: ");
     scanf("%d", &indice);
 
     if (indice < 1 || indice > totalEventos) {
-        printf("NÃºmero invÃ¡lido. OperaÃ§Ã£o cancelada.\n");
+        printf("Numero invalido. Operacao cancelada.\n");
         return;
     }
 
     Evento *eventoSelecionado = &eventos[indice - 1];
 
     if (!validarTelemovel(utilizador)) {
-        printf("Telemovel invÃ¡lido! O Telemovel deve conter apenas nÃºmeros.\n");
+        printf("Telemovel invalido! O Telemovel deve conter apenas numeros.\n");
         return;
     }
 
     if (!validarNome(telefone)) {
-        printf("Nome invÃ¡lido! O nome deve conter apenas letras e espaÃ§os.\n");
+        printf("Nome invalido! O nome deve conter apenas letras e espacos.\n");
         return;
     }
 
@@ -341,15 +341,15 @@ void inscreverEvento(char *utilizador, char *telefone, Evento eventos[], int tot
         (*totalInscricoes)++;
         eventoSelecionado->numInscritos++;
 
-        printf("InscriÃ§Ã£o realizada com sucesso!\n");
+        printf("Inscricao realizada com sucesso!\n");
     } else {
         
         if (eventoSelecionado->filaEsperaFim < MAX_ESPERA) {
             strcpy(eventoSelecionado->filaEspera[eventoSelecionado->filaEsperaFim], utilizador);
             eventoSelecionado->filaEsperaFim++;
-            printf("Evento cheio! VocÃª foi adicionado Ã  fila de espera.\n");
+            printf("Evento cheio! Voce foi adicionado a fila de espera.\n");
         } else {
-            printf("Fila de espera cheia! NÃ£o Ã© possÃ­vel adicionar Ã  fila.\n");
+            printf("Fila de espera cheia! NÃ£o Ã© possi­vel adicionar a fila.\n");
         }
     }
 
@@ -366,7 +366,7 @@ void verificarFilaDeEspera(int eventoIndex, Evento eventos[], Inscricao inscrico
                 Inscricao novaInscricao;
         strcpy(novaInscricao.Telemovel, evento->filaEspera[evento->filaEsperaInicio]);
         strcpy(novaInscricao.nomeEvento, evento->nome);
-        printf("Digite o telefone do prÃ³ximo da fila (%s): ", novaInscricao.Telemovel);
+        printf("Digite o telefone do proximo da fila (%s): ", novaInscricao.Telemovel);
         scanf("%s", novaInscricao.telefone);
 
         inscricoes[*totalInscricoes] = novaInscricao;
@@ -374,13 +374,13 @@ void verificarFilaDeEspera(int eventoIndex, Evento eventos[], Inscricao inscrico
         evento->numInscritos++;
         evento->filaEsperaInicio++;
 
-        printf("PrÃ³ximo da fila (%s) foi inscrito automaticamente no evento \"%s\".\n", novaInscricao.Telemovel, evento->nome);
+        printf("Proximo da fila (%s) foi inscrito automaticamente no evento \"%s\".\n", novaInscricao.Telemovel, evento->nome);
     }
 }
 
 void listarInscritosPorEvento(Evento eventos[], int totalEventos, Inscricao inscricoes[], int totalInscricoes) {
     if (totalInscricoes == 0) {
-        printf("Nenhuma inscriÃ§Ã£o cadastrada.\n");
+        printf("Nenhuma inscricao cadastrada.\n");
         return;
     }
 
@@ -438,7 +438,7 @@ void menuAdministrador(Evento eventos[], int *totalEventos, Inscricao inscricoes
         printf("\n=== 4. Listar inscritos        ===");
         printf("\n=== 5. Voltar ao menu principal===");
         printf("\n==================================\n");
-        printf("\n==> Escolha uma opÃ§Ã£o: ");
+        printf("\n==> Escolha uma opcao: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -458,7 +458,7 @@ void menuAdministrador(Evento eventos[], int *totalEventos, Inscricao inscricoes
                 printf("Voltando ao menu principal...\n");
                 break;
             default:
-                printf("OpÃ§Ã£o invÃ¡lida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
         }
     } while (opcao != 5);
 }
@@ -472,7 +472,7 @@ int main() {
 
     do {
         printf("\n====================================");
-        printf("\n=== Sistema de GestÃ£o de Eventos ===\n");
+        printf("\n=== Sistema de GestÃo de Eventos ===\n");
         printf("===                              ===");
         printf("\n=== 1. Entrar como Utilizador    ===");
         printf("\n===                              ===");
@@ -481,17 +481,17 @@ int main() {
         printf("\n=== 3. Sair                      ===");
         printf("\n===                              ===");
         printf("\n====================================\n");
-        printf("\n==> Escolha uma opÃ§Ã£o: ");
+        printf("\n==> Escolha uma opcao: ");
         scanf("%d", &opcao);
         getchar(); 
 
         switch (opcao) {
             case 1:
                 do {
-                    printf("\nDigite o seu Telemovel (somente nÃºmeros): ");
+                    printf("\nDigite o seu Telemovel (somente numeros): ");
                     scanf("%s", Telemovel);
                     if (!validarTelemovel(Telemovel)) {
-                        printf("Erro: O Telemovel deve conter apenas nÃºmeros.\n");
+                        printf("Erro: O Telemovel deve conter apenas numeros.\n");
                     }
                 } while (!validarTelemovel(Telemovel));
 
@@ -510,7 +510,7 @@ int main() {
                 printf("Saindo do sistema...\n");
                 break;
             default:
-                printf("OpÃ§Ã£o invÃ¡lida. Tente novamente.\n");
+                printf("Opcao invalida. Tente novamente.\n");
         }
     } while (opcao != 3);
 
