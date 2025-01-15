@@ -69,19 +69,19 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
     int opcao;
 
     do {
-        printf("\n==================================");
-        printf("\n===     Menu do Utilizador     ===");
-        printf("\n===                            ===");
-        printf("\n=== 1. Ver eventos             ===");
-        printf("\n===                            ===");
-        printf("\n=== 2. Inscrever-se em evento  ===");
-        printf("\n===                            ===");
-        printf("\n=== 3. Remover inscricao       ===");
-        printf("\n===                            ===");
-        printf("\n=== 4. Gerar bilhete eletronico===");
-        printf("\n===                            ===");
-        printf("\n=== 5. Voltar ao menu principal===");
-        printf("\n==================================\n");
+        printf("\n===================================");
+        printf("\n===      Menu do Utilizador     ===");
+        printf("\n===                             ===");
+        printf("\n=== 1. Ver eventos              ===");
+        printf("\n===                             ===");
+        printf("\n=== 2. Inscrever-se em evento   ===");
+        printf("\n===                             ===");
+        printf("\n=== 3. Remover inscricao        ===");
+        printf("\n===                             ===");
+        printf("\n=== 4. Gerar bilhete eletronico ===");
+        printf("\n===                             ===");
+        printf("\n=== 5. Voltar ao menu principal ===");
+        printf("\n===================================\n");
         printf("\n==>Escolha uma opcao: ");
         scanf("%d", &opcao);
 
@@ -152,7 +152,7 @@ void gerarBilheteEletronico(char *nomeUtilizador, char *Telemovel, Inscricao ins
 }
 
 
-// FunÃ§Ãµes restantes...
+// Funcoes restantes...
 
 void removerInscricao(char *utilizador, Evento eventos[], int totalEventos, Inscricao inscricoes[], int *totalInscricoes) {
     if (*totalInscricoes == 0) {
