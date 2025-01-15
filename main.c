@@ -78,7 +78,7 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
         printf("\n===                            ===");
         printf("\n=== 3. Remover inscricao       ===");
         printf("\n===                            ===");
-        printf("\n=== 4. Gerar bilhete eletranico===");
+        printf("\n=== 4. Gerar bilhete eletronico===");
         printf("\n===                            ===");
         printf("\n=== 5. Voltar ao menu principal===");
         printf("\n==================================\n");
@@ -143,7 +143,7 @@ void gerarBilheteEletronico(char *nomeUtilizador, char *Telemovel, Inscricao ins
              nomeUtilizador, Telemovel, evento.nome, evento.dataHora, evento.local);
 
     printf("\n==================================");
-    printf("\n===     Bilhete Eletranico     ===");
+    printf("\n===     Bilhete Eletronico     ===");
     printf("\n==================================\n");
     printf("Nome: %s\n", nomeUtilizador);
     printf("Telemovel: %s\n", Telemovel);
