@@ -8,17 +8,25 @@
 #define MAX_EVENTOS 100
 #define MAX_INSCRICOES 100
 #define MAX_ESPERA 100  
+#define FILENAME_EVENTOS "eventos.txt"  
+#define MAX_ORADORES 100
+typedef struct {
 
 
+
+
+}DataHora;
 typedef struct {
     char nome[100];
     char dataHora[50];
     char local[100];
-    int maxPessoas;   
-    int numInscritos; 
-    char filaEspera[MAX_ESPERA][100];  
-    int filaEsperaInicio;  
-    int filaEsperaFim;  
+    int maxPessoas;
+    int numInscritos;
+    char filaEspera[MAX_ESPERA][100];
+    int filaEsperaInicio;
+    int filaEsperaFim;
+    char oradores[MAX_ORADORES][100];
+    int numOradores;
 } Evento;
 
 typedef struct {
@@ -39,6 +47,30 @@ void removerInscricao(char *utilizador, Evento eventos[], int totalEventos, Insc
 void listarInscritosPorEvento(Evento eventos[], int totalEventos, Inscricao inscricoes[], int totalInscricoes);
 void gerarBilheteEletronico(char *nomeUtilizador, char *Telemovel, Inscricao inscricao, Evento evento);
 
+void salvarEventos(Evento eventos[], int totalEventos) {
+    FILE *file = fopen(FILENAME_EVENTOS, "w");
+    if (!file) {
+        printf("Erro ao abrir o arquivo para salvar.\n");
+        return;
+    }
+
+    fwrite(&totalEventos, sizeof(int), 1, file);
+    fwrite(eventos, sizeof(Evento), totalEventos, file);
+    fclose(file);
+}
+
+
+int carregarEventos(Evento eventos[]) {
+    FILE *file = fopen(FILENAME_EVENTOS, "r");
+    if (!file) return 0;
+
+    int totalEventos;
+    fread(&totalEventos, sizeof(int), 1, file);
+    fread(eventos, sizeof(Evento), totalEventos, file);
+    fclose(file);
+    return totalEventos;
+}
+
 int validarTelemovel(const char *Telemovel) {
     for (int i = 0; Telemovel[i] != '\0'; i++) {
         if (!isdigit(Telemovel[i])) {
@@ -56,6 +88,39 @@ int validarNome(const char *nome) {
     }
     return 1;  
 }
+
+void adicionarOrador(Evento eventos[], int totalEventos) {
+    if (totalEventos == 0) {
+        printf("Nenhum evento cadastrado.\n");
+        return;
+    }
+
+    listarEventos(eventos, totalEventos);
+    int indice;
+    printf("Escolha o evento para adicionar um orador (1-%d): ", totalEventos);
+    scanf("%d", &indice);
+    getchar();
+
+    if (indice < 1 || indice > totalEventos) {
+        printf("Número inválido.\n");
+        return;
+    }
+
+    Evento *evento = &eventos[indice - 1];
+    if (evento->numOradores >= MAX_ORADORES) {
+        printf("Limite de oradores atingido.\n");
+        return;
+    }
+
+    printf("Nome do orador: ");
+    fgets(evento->oradores[evento->numOradores], 100, stdin);
+    evento->oradores[evento->numOradores][strcspn(evento->oradores[evento->numOradores], "\n")] = '\0';
+    evento->numOradores++;
+
+    salvarEventos(eventos, totalEventos);
+    printf("Orador adicionado ao evento %s!\n", evento->nome);
+}
+
 
 void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int *totalEventos, Inscricao inscricoes[], int *totalInscricoes) {
     while (!validarNome(nomeUtilizador)) {
