@@ -203,9 +203,6 @@ void menuUtilizador(char *Telemovel, char *nomeUtilizador, Evento eventos[], int
     } while (opcao != 5);
 }
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 void gerarQRCodeSimulado(const char *dados)
 {
